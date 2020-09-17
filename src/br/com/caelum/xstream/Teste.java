@@ -8,8 +8,8 @@ import com.thoughtworks.xstream.XStream;
 public class Teste {
 
 	public static void main(String[] args) {
-		Produto geladeira = new Produto("Geladeira", 1000.0, "Geladeira duas portas", 1234);
-		Produto ferro = new Produto("Ferro de passar", 100.0, "Ferro com vaporizador", 1235);
+		Produto geladeira = new Eletrodomestico("Geladeira", 1000.0, "Geladeira duas portas", 1234);
+		Produto ferro = new Eletrodomestico("Ferro de passar", 100.0, "Ferro com vaporizador", 1235);
 		
 		List<Produto> produtos = new ArrayList<Produto>();
 		produtos.add(geladeira);
@@ -21,6 +21,8 @@ public class Teste {
 		XStream xstream = new XStream();
 		xstream.alias("compra", Compra.class);
 		xstream.alias("produto", Produto.class);
+		xstream.alias("eletrodomestico", Eletrodomestico.class);
+		//xstream.addImplicitCollection(Compra.class, "produtos"); //para o caso se querer omitir a tag produtos.
 		xstream.aliasField("descrição", Produto.class, "descricao");
 		xstream.setMode(XStream.NO_REFERENCES);
 		xstream.useAttributeFor(Produto.class, "codigo");
