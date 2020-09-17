@@ -31,7 +31,8 @@ public class PrecoSimpleConverter implements SingleValueConverter {
 	}
 
 	@Override
-	public String toString(Object valor) {
+	public String toString(Object value) {
+        Double valor = (Double) value;
 		return formatter().format(valor);
 	}
 

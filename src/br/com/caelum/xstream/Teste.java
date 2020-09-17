@@ -26,9 +26,11 @@ public class Teste {
 		xstream.aliasField("descrição", Produto.class, "descricao");
 		xstream.setMode(XStream.NO_REFERENCES);
 		xstream.useAttributeFor(Produto.class, "codigo");
-		xstream.registerLocalConverter(Produto.class, "preco", new PrecoSimpleConverter());
-		xstream.registerLocalConverter(Eletrodomestico.class, "preco", new PrecoSimpleConverter());
 		
+		xstream.registerLocalConverter(Produto.class, "preco", new PrecoSimpleConverter());
+		
+		xstream.registerConverter(new CompraDiferenteConverter());
+
 		String xml = xstream.toXML(compra);
 		System.out.println(xml);	
 				
