@@ -14,6 +14,7 @@ public class Teste {
 		List<Produto> produtos = new ArrayList<Produto>();
 		produtos.add(geladeira);
 		produtos.add(ferro);
+		produtos.add(geladeira);
 		
 		Compra compra = new Compra(0001, produtos);
 		
@@ -21,6 +22,7 @@ public class Teste {
 		xstream.alias("compra", Compra.class);
 		xstream.alias("produto", Produto.class);
 		xstream.aliasField("descrição", Produto.class, "descricao");
+		xstream.setMode(XStream.NO_REFERENCES);
 		xstream.useAttributeFor(Produto.class, "codigo");
 		String xml = xstream.toXML(compra);
 		System.out.println(xml);	
